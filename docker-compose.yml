@@ -43,8 +43,24 @@ services:
     networks:
       - n8n-network
 
+  jupyter:
+    image: jupyter/datascience-notebook:latest
+    container_name: jupyter
+    restart: unless-stopped
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+      GRANT_SUDO: "yes"
+    volumes:
+      - jupyter_data:/home/jovyan/work
+    ports:
+      - "8888:8888"
+    networks:
+      - n8n-network
+    command: start-notebook.sh --NotebookApp.token='' --NotebookApp.password=''
+
 volumes:
   postgres_data:
+  jupyter_data:
 
 networks:
   n8n-network:
