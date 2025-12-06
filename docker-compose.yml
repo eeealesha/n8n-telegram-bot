@@ -44,7 +44,7 @@ services:
   #     - n8n-network
 
   jupyter:
-    image: jupyter/datascience-notebook:latest
+    image: jupyter/minimal-notebook:latest
     container_name: jupyter
     restart: unless-stopped
     environment:
